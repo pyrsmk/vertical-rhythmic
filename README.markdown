@@ -22,7 +22,7 @@ Let's say we want a base font size of 0.9em and a base line height of 1.4em (man
 	$base-line-height:1.4em;
 	@import "vertical-rhythmic";
 
-So, we want a `h1` with a 1.5em font size. We must update its line height according to its new font size. Right now, we just want an automatic line height:
+So, we want a `<h1>` with a 1.5em font size. We must update its line height according to its new font size. Right now, we just want an automatic line height:
 
 	// First approach
 	h1{
@@ -59,4 +59,4 @@ That's all we need for that and your title is fully rhythmic.
 IV - Additional notes
 ---------------------
 
-Managing many levels of line-height childs is painful and websites generally just use only one depth level, so we don't support it. If you want to have a <p> within a <div> within another <div> and all have their own line-height, just take your calculator and enjoy.
+Managing many levels of line-height childs is painful and websites generally just use only one depth level, so we don't support it. If you want to have a `<p>` within a `<div>` within another `<div>` and all have their own line-height, just take your calculator and enjoy.
