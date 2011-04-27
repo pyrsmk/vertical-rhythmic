@@ -1,11 +1,14 @@
 /*
-	Vertical-rhythm 0.2, Aurélien Delogu (dev@dreamysource.fr)
+	Title: Vertical-rhythm 0.2, Aurélien Delogu (dev@dreamysource.fr)
 
-	Compass proposes px-based vertical-rhythm support, this behavior is a habit of many developers and designers to build identical websites across browsers and to be compatible with IE6. Since it breaks accessibility (users can't change the global font size anymore in their browser preferences), we tried to provide an em-based vertical-rhythm solution.
+	License: LGPL v3 (http://www.gnu.org/licenses/lgpl.txt)
 
-	Managing many levels of line-height childs is painful and sites generally just use only one depth level, so we don't support it. If you want to have a <p> within a <div> within another <div> (so, we have 3 depths here) and all have their own line-height, you must take your calculator and enjoy.
+	Description:
+		Compass proposes px-based vertical-rhythm support, this behavior is a habit of many developers and designers to build identical websites across browsers and to be compatible with IE6. Since it breaks accessibility (users can't change the global font size anymore in their browser preferences), we tried to provide an em-based vertical-rhythm solution.
 
-	There's two approach to rhythm your site: you can use the both rhythm functions which are very flexibles or you can include the font-size, margin, padding or border properties which are more assisted. In all cases, you must set $base-font-size and $base-line-height if you don't want a based rhythm of 1em/1.5em (generally 16px/24px). After that, you just have to includ vertical-rhythmic to your stylesheet and it initialize body rhythm for you.
+		Managing many levels of line-height childs is painful and sites generally just use only one depth level, so we don't support it. If you want to have a <p> within a <div> within another <div> (so, we have 3 depths here) and all have their own line-height, you must take your calculator and enjoy.
+
+		There's two approach to rhythm your site: you can use the both rhythm functions which are very flexibles or you can include the font-size, margin, padding or border properties which are more assisted. In all cases, you must set $base-font-size and $base-line-height if you don't want a based rhythm of 1em/1.5em (generally 16px/24px). After that, you just have to includ vertical-rhythmic to your stylesheet and it initialize body rhythm for you.
 */
 
 /* Variable: $base-font-size
