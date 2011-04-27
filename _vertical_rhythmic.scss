@@ -1,0 +1,281 @@
+/*
+	Vertical-rhythm 0.1, Aurélien Delogu (dev@dreamysource.fr)
+
+	Compass proposes vertical-rhythm support with px/% font-size in body. This behavior is habit of many developers and designers to build identical websites across browsers. Since it breaks accessibility (users can't change the global font size anymore in their browser preferences), we tried to provide an em-based vertical-rhythm solution.
+
+	Since managing many levels of font-size childs is painful and sites generally just use only one depth level, we don't support it. So, if you want to have a <p> within a <div> within another <div> (so, we have 3 depths here) and all have their own font-size, you must take your calculator and enjoy it.
+
+	To rhythm your site, you've just to replace your properties with the include ones (is it useful to remind you that you must have notions on vertical-rhythm concept and Sass?).
+*/
+
+/* Variable: $base-font-size
+   The base font-size which will be applied to the body (default: 1em). */
+$base-font-size:	1em !default;
+
+/* Variable: $base-line-height
+   The base line-height which will be applied to the body (default: 1.5em). */
+$base-line-height:	1.5em !default;
+
+/* Variable: $base-px2em
+   The base ratio between pixels and ems, based on a 16px font-size (which is the basic font-size on browsers). */
+$base-px2em:		0.0625em / $base-font-size * 1em;
+
+/* Initialize the rhythm */
+body{
+	font-size:$base-font-size;
+	line-height:$base-line-height;
+}
+
+/* Calculation function for margins */
+@mixin -rhythm-margin($property,$lines,$font-size,$border-width){
+	#{$property}:$base-line-height / $font-size * $lines - ($border-width * $base-px2em / $font-size) * 1em;
+}
+
+/* Calculation function for borders */
+@mixin -rhythm-border($property,$color,$font-size,$width,$type){
+	#{$property}:$color ($width * $base-px2em / $font-size * 1em) $type;
+}
+
+/*
+	Function: font-size
+
+	Sets a new font-size and automatically adapt the line-height.
+
+	Parameters:	$font-size	- The font size (in ems)
+				$lines		- Number of whitespace lines for the line-height
+							  (keep base line proportions by default)
+*/
+@mixin font-size($font-size,$lines:ceil($font-size / $base-line-height)){
+	font-size:$font-size;
+	line-height:$base-line-height / $font-size * $lines * 1em;
+}
+
+/*
+	Function: margin
+
+	Adds a margin around a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin margin($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(margin,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: margin-top
+
+	Adds a top margin to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin margin-top($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(margin-top,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: margin-right
+
+	Adds a right margin to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin margin-right($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(margin-right,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: margin-bottom
+
+	Adds a bottom margin to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin margin-bottom($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(margin-bottom,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: margin-left
+
+	Adds a left margin to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin margin-left($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(margin-left,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: padding
+
+	Adds a padding to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin padding($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(padding,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: padding-top
+
+	Adds a top padding to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin padding-top($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(padding-top,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: padding-right
+
+	Adds a right padding to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin padding-right($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(padding-right,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: padding-bottom
+
+	Adds a bottom padding to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin padding-bottom($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(padding-bottom,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: padding-left
+
+	Adds a left padding to a box
+
+	Parameters:	$lines			- Number of whitespace lines (default: 1)
+				$font-size		- The actual font-size, in ems, to calculate with (default: 1em)
+				$border-width	- The width of additionnal borders around the box.
+								  This is useful to substract those borders from the whitespace to not break the rhythm.
+*/
+@mixin padding-left($lines:1,$font-size:1em,$border-width:0){
+	@include -rhythm-margin(padding-left,$lines,$font-size,$border-width);
+}
+
+/*
+	Function: border
+
+	Adds a border around a box
+
+	Parameters:	$color		- The color
+				$font-size	- The font-size of the box (in ems)
+				$width		- The width
+							  It quite equals to pixels but it depends on the base font-size of the browser, so it take no units
+				$type		- The type of the outline
+*/
+@mixin border($color,$font-size:1em,$width:1,$type:solid){
+	@include -rhythm-border(border,$color,$font-size,$width,$type);
+}
+
+/*
+	Function: border-top
+
+	Adds a top border to a box
+
+	Parameters:	$color		- The color
+				$font-size	- The font-size of the box (in ems)
+				$width		- The width
+							  It quite equals to pixels but it depends on the base font-size of the browser, so it take no units
+				$type		- The type of the outline
+*/
+@mixin border-top($color,$font-size:1em,$width:1,$type:solid){
+	@include -rhythm-border(border-top,$color,$font-size,$width,$type);
+}
+
+/*
+	Function: border-right
+
+	Adds a right border to a box
+
+	Parameters:	$color		- The color
+				$font-size	- The font-size of the box (in ems)
+				$width		- The width
+							  It quite equals to pixels but it depends on the base font-size of the browser, so it take no units
+				$type		- The type of the outline
+*/
+@mixin border-right($color,$font-size:1em,$width:1,$type:solid){
+	@include -rhythm-border(border-right,$color,$font-size,$width,$type);
+}
+
+/*
+	Function: border-bottom
+
+	Adds a bottom border to a box
+
+	Parameters:	$color		- The color
+				$font-size	- The font-size of the box (in ems)
+				$width		- The width
+							  It quite equals to pixels but it depends on the base font-size of the browser, so it take no units
+				$type		- The type of the outline
+*/
+@mixin border-bottom($color,$font-size:1em,$width:1,$type:solid){
+	@include -rhythm-border(border-bottom,$color,$font-size,$width,$type);
+}
+
+/*
+	Function: border-left
+
+	Adds a left border to a box
+
+	Parameters:	$color		- The color
+				$font-size	- The font-size of the box (in ems)
+				$width		- The width
+							  It quite equals to pixels but it depends on the base font-size of the browser, so it take no units
+				$type		- The type of the outline
+*/
+@mixin border-left($color,$font-size:1em,$width:1,$type:solid){
+	@include -rhythm-border(border-left,$color,$font-size,$width,$type);
+}
+
+/*
+	Function: outline
+
+	Adds an outline around a box
+
+	Parameters:	$color		- The color
+				$font-size	- The font-size of the box (in ems)
+				$width		- The width
+							  It quite equals to pixels but it depends on the base font-size of the browser, so it take no units
+				$type		- The type of the outline
+*/
+@mixin outline($color,$font-size:1em,$width:1,$type:solid){
+	@include -rhythm-border(outline,$color,$font-size,$width,$type);
+}
