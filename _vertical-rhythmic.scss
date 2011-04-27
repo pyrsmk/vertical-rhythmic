@@ -31,7 +31,7 @@ body{
 	Sets a rhythm
 
 	Parameters:	$lines		- Number of whitespace lines (default: 1).
-							  You can specify "auto" value and it will generate a proportional value from the base line-height.
+							  You can specify "auto" value and it will generate a proportional value from the base line-height (especially useful when you want to set a good line-height value).
 				$font-size	- The font size (in em)
 
 */
