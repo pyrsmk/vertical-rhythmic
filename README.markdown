@@ -4,14 +4,14 @@ Vertical-rhythmic
 I - Introduction
 ----------------
 
-	In first, if you don't know what vertical rhythm is please read this [great article](http://24ways.org/2006/compose-to-a-vertical-rhythm).
+In first, if you don't know what vertical rhythm is please read this [great article](http://24ways.org/2006/compose-to-a-vertical-rhythm).
 
-	Vertical-rhythm is a web development concept which consists in adjust line-heights across a web page to have a vertical structure for reading. Manage rhythms is quite painful because you must take your calculator and adapt line heights, margins, paddings, borders, ..., by yourself. Hopefully, Compass, a great Sass framework, provides support for that stuff. But... Compass proposes px-based vertical-rhythm. This behavior is a habit of many developers and designers to build identical websites across browsers and meaning to be compatible with IE6. Unfortunately, it breaks accessibility: users can't change the global font size anymore in their browser preferences. Moreover, mixins are not developer friendly and do not support outlines at all (useful with homemade buttons). Vertical-rhythmic tries to bring you a complete em-based tool with extreme ease of use.
+Vertical-rhythm is a web development concept which consists in adjust line-heights across a web page to have a vertical structure for reading. Manage rhythms is quite painful because you must take your calculator and adapt line heights, margins, paddings, borders, ..., by yourself. Hopefully, Compass, a great Sass framework, provides support for that stuff. But... Compass proposes px-based vertical-rhythm. This behavior is a habit of many developers and designers to build identical websites across browsers and meaning to be compatible with IE6. Unfortunately, it breaks accessibility: users can't change the global font size anymore in their browser preferences. Moreover, mixins are not developer friendly and do not support outlines at all (useful with homemade buttons). Vertical-rhythmic tries to bring you a complete em-based tool with extreme ease of use.
 
 II - Utilization
 ----------------
 
-	There's two approaches to rhythm your site: you can use the both rhythm functions, which are very flexibles, or you can include the font-size, margin, padding, border or outline properties, which are more assisted. In all cases, you must set `$base-font-size` and `$base-line-height` if you don't want a based rhythm of 1em/1.5em (16px/24px in basic browsers configuration). After that, you just have to include vertical-rhythmic to your stylesheet and it initializes body rhythm for you.
+There's two approaches to rhythm your site: you can use the both rhythm functions, which are very flexibles, or you can include the font-size, margin, padding, border or outline properties, which are more assisted. In all cases, you must set `$base-font-size` and `$base-line-height` if you don't want a based rhythm of 1em/1.5em (16px/24px in basic browsers configuration). After that, you just have to include vertical-rhythmic to your stylesheet and it initializes body rhythm for you.
 
 III - Quick example
 -------------------
@@ -59,4 +59,4 @@ That's all we need for that and your title is fully rhythmic.
 IV - Additional notes
 ---------------------
 
-	Managing many levels of line-height childs is painful and websites generally just use only one depth level, so we don't support it. If you want to have a <p> within a <div> within another <div> and all have their own line-height, just take your calculator and enjoy.
+Managing many levels of line-height childs is painful and websites generally just use only one depth level, so we don't support it. If you want to have a <p> within a <div> within another <div> and all have their own line-height, just take your calculator and enjoy.
