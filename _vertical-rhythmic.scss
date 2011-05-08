@@ -21,7 +21,7 @@ body{
 /*
 	Function: rhythm
 
-	Sets a rhythm
+	Returns a rhythm
 
 	Parameters:	$lines		- Number of whitespace lines (default: 1).
 							  You can specify "auto" value and it will generate a proportional value from the base line-height (especially useful when you want to set a good line-height value).
@@ -38,7 +38,7 @@ body{
 /*
 	Function: px-rhythm
 
-	Sets a rhythm based on pixels
+	Returns a rhythm from pixel unit
 
 	Parameters:	$width		- The width of the rhythm (without px unit)
 				$font-size	- The font size (in em)
