@@ -1,5 +1,5 @@
-Vertical-rhythmic
-=================
+Vertical-rhythmic 0.3.0
+=======================
 
 I - Introduction
 ----------------
@@ -10,13 +10,26 @@ Vertical-rhythm is a web development concept which consists in adjusting line he
 
 Vertical-rhythmic tries to bring you a complete em-based tool with extreme ease of use.
 
-II - Utilization
-----------------
+II - Notes about 0.3 version
+----------------------------
+
+Vertical-rhythmic 0.3 doesn't support these mixins anymore:
+
+- margin-left
+- margin-right
+- padding-left
+- padding-right
+- border-left
+- border-right
+
+This is because `left` and `right` properties aren't used at all with vertical rhythms.
+
+Previous version noticed that this library can't be used with nested `font-size` declarations. In fact, it's __wrong__.
+
+III - Syntax
+------------
 
 There's two approaches to rhythm your site: you can use both rhythm functions, which are very flexibles, or you can include the font-size, margin, padding, border or outline properties, which are more assisted. In all cases, you must set `$base-font-size` and `$base-line-height` if you don't want a based rhythm of 1em/1.5em (16px/24px in basic browsers configuration). After that, you just have to include vertical-rhythmic to your stylesheet and it initializes body rhythm for you.
-
-III - Quick example
--------------------
 
 Let's say we want a base font size of 0.9em and a base line height of 1.4em (many websites reduce their fonts at these sizes, it's nearly a standard, per say).
 
@@ -58,9 +71,7 @@ Let's go more deeply! Now we want a border and an outline around the title with 
 		@include padding(2,1.5em,2);
 	}
 
-That's all we need for that and your title is fully rhythmic.
+IV - License
+------------
 
-IV - Additional notes
----------------------
-
-Setting many levels of line-height childs increases exponentially the complexity of the rhythm calculation. Furthermore, websites generally use only one depth level. Thus, vertical-rhythmic doesn't support it. Long story short: if you want to have a `<p>` within a `<div>` within another `<div>`, and all have their own line-height, just take your calculator and enjoy.
+This sass library is published under the MIT license.
