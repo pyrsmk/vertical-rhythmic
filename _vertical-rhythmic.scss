@@ -1,7 +1,7 @@
 /*
     vertical-rhythmic
     
-    Version : 0.3.0
+    Version : 0.4.0
     Author  : Aurélien Delogu (dev@dreamysource.fr)
     License : MIT
 */
@@ -93,6 +93,19 @@ body{
 }
 
 /*
+    Add a right margin to a box
+
+    Parameters
+        integer $lines          : number of whitespace lines (default: 1)
+        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
+        integer $border-width   : width of additionnal borders around the box
+                                  Useful to substract borders from the whitespace to not break the rhythm
+*/
+@mixin margin-right($lines:1,$font-size:1em,$border-width:0){
+    margin-right:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
+}
+
+/*
     Add a bottom margin to a box
 
     Parameters
@@ -103,6 +116,19 @@ body{
 */
 @mixin margin-bottom($lines:1,$font-size:1em,$border-width:0){
     margin-bottom:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
+}
+
+/*
+    Add a left margin to a box
+
+    Parameters
+        integer $lines          : number of whitespace lines (default: 1)
+        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
+        integer $border-width   : width of additionnal borders around the box
+                                  Useful to substract borders from the whitespace to not break the rhythm
+*/
+@mixin margin-left($lines:1,$font-size:1em,$border-width:0){
+    margin-left:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
 }
 
 /*
@@ -132,6 +158,19 @@ body{
 }
 
 /*
+    Add a right padding to a box
+
+    Parameters
+        integer $lines          : number of whitespace lines (default: 1)
+        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
+        integer $border-width   : width of additionnal borders around the box
+                                  Useful to substract borders from the whitespace to not break the rhythm
+*/
+@mixin padding-right($lines:1,$font-size:1em,$border-width:0){
+    padding-right:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
+}
+
+/*
     Add a bottom padding to a box
 
     Parameters
@@ -142,6 +181,19 @@ body{
 */
 @mixin padding-bottom($lines:1,$font-size:1em,$border-width:0){
     padding-bottom:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
+}
+
+/*
+    Add a left padding to a box
+
+    Parameters
+        integer $lines          : number of whitespace lines (default: 1)
+        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
+        integer $border-width   : width of additionnal borders around the box
+                                  Useful to substract borders from the whitespace to not break the rhythm
+*/
+@mixin padding-left($lines:1,$font-size:1em,$border-width:0){
+    padding-left:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
 }
 
 /*
@@ -173,6 +225,20 @@ body{
 }
 
 /*
+    Add a right border to a box
+
+    Parameters
+        string $color       : color
+        number $font-size   : font-size of the box (in em)
+        integer $width      : border width
+                              It quite equals to pixels but it depends on the base font-size of the browser, so it takes no unit
+        string $type        : border type
+*/
+@mixin border-right($color,$font-size:1em,$width:1,$type:solid){
+    border-right:px-rhythm($width,$font-size) $type $color;
+}
+
+/*
     Add a bottom border to a box
 
     Parameters
@@ -184,6 +250,20 @@ body{
 */
 @mixin border-bottom($color,$font-size:1em,$width:1,$type:solid){
     border-bottom:px-rhythm($width,$font-size) $type $color;
+}
+
+/*
+    Add a left border to a box
+
+    Parameters
+        string $color       : color
+        number $font-size   : font-size of the box (in em)
+        integer $width      : border width
+                              It quite equals to pixels but it depends on the base font-size of the browser, so it takes no unit
+        string $type        : border type
+*/
+@mixin border-left($color,$font-size:1em,$width:1,$type:solid){
+    border-left:px-rhythm($width,$font-size) $type $color;
 }
 
 /*
