@@ -1,66 +1,119 @@
-Vertical-rhythmic 0.4.0
+Vertical-rhythmic 2.0.0
 =======================
 
 I - Introduction
 ----------------
 
-In first, if you don't know what vertical rhythm is please read this [great article](http://24ways.org/2006/compose-to-a-vertical-rhythm).
+Vertical rhythm is a web development concept which consists in adjusting line heights, paddings, margins, across a web page to have a vertical structure for a better reading accessibility. If you are not familiar with vertical rhythm concept you can read these great articles :
+- http://24ways.org/2006/compose-to-a-vertical-rhythm
+- http://alistapart.com/article/more-meaningful-typography
+- http://gregrickaby.com/using-the-golden-ratio-and-rems
 
-Vertical-rhythm is a web development concept which consists in adjusting line heights across a web page to have a vertical structure for a better accessibility. Manually managing rhythms is dreadfully painful because you must take your calculator and adapt line heights, margins, paddings, borders, ..., by yourself. Hopefully, Compass, a great Sass framework, provides support for that stuff. But... Compass proposes px-based vertical rhythm. This behavior is a habit of many developers and designers to build identical websites across browsers and have IE6 compatible text zoom. Unfortunately, it breaks accessibility: users can't change the global font size anymore in their browser preferences. Moreover, mixins aren't developer friendly and don't support outlines at all (useful with homemade buttons).
+As you may saw, manually managing rhythms is dreadfully painful. There's some tools and methods to manage vertical rhythms but most of them are pixel based and a responsive design should not be created with pixel based in mind but with adaptiveness across devices. Then, we need to use `em` or `rem` units.
 
-Vertical-rhythmic tries to bring you a complete em-based tool with extreme ease of use.
+Vertical-rhythmic revolves around the font size of each block of your design to keep a beautiful ratio in line heights, margins, padding, and other whitespaces.
 
-II - Use
+II - Quick example
+------------------
+
+```scss
+html{
+	@include vr-baseline(0.9rem,1.4rem);
+}
+
+section{
+	font-size: 1.2rem;
+	line-height: vr(1.2rem);
+}
+
+section div{
+	font-size: 1.4rem;
+	line-height: vr(1.4rem);
+	margin-top: vr(1.4rem,2);
+	margin-bottom: vr(1.4rem,3);
+	padding: vr(1.4rem,0.5);
+}
+```
+
+III - Use
 --------
 
-There's two approaches to rhythm your site: you can use both rhythm functions, which are very flexibles, or you can include the font-size, margin, padding, border or outline properties, which are more assisted. In all cases, you must set `$base-font-size` and `$base-line-height` if you don't want a based rhythm of 1em/1.5em (16px/24px in basic browsers configuration). After that, you just have to include vertical-rhythmic to your stylesheet and it initializes body rhythm for you.
+To begin with vertical rhythms, you need to establish the baseline to give to vertical-rhythmic the base ratio for all calculations. The function takes your `font-size` as first argument and your `line-height` as second argument. Please note that the library is compatible with __any CSS unit__.
 
-III - Quick example
--------------------
+```scss
+html{
+	@include vr-baseline(0.9rem,1.4rem);
+}
+```
 
-Let's say we want a base font size of 0.9em and a base line height of 1.4em (many websites reduce their fonts at these sizes, it's nearly a standard, per say).
+Be careful that `vr-baseline()` automatically adds `font-size` and `line-height` properties to your stylesheet, to avoid redundant declaration. Then, you can use the vertical-rhythmic core wherever you want. Each time you change your `font-size`, you will must specify a correct rhythm for all other properties :
 
-	$base-font-size:0.9em;
-	$base-line-height:1.4em;
-	@import "vertical-rhythmic";
+```scss
+h1{
+	font-size:1.6rem;
+	line-height:vr(1.6rem,1.5);
+	margin:vr(1.6rem,2) 0;
+}
+```
 
-So, we want a `<h1>` with a 1.5em font size. We must update its line height according to its new font size. Right now, we just want an automatic line height:
+Then that's all, you're good to ride!
 
-	// First approach
-	h1{
-		font-size:1.5em;
-		line-height:rhythm(auto,1.5em);
-	}
+IV - REMs and PX fallback
+-------------------------
 
-	// Second approach
-	h1{
-		@include font-size(1.5em);
-	}
+[Some browsers](http://caniuse.com/#feat=rem), whose Internet Explorer 7 and 8, don't support `rem`. We need a fallback with `px` unit. Vertical-rhythmic provides a `rem2px` method to simplify that fallback when using `rem` unit :
 
-Maybe you think the second approach is more expeditive. Yes. But it depends on the context ;)
+```scss
+p{
+	font-size: rem2px(1.2rem);
+	font-size: 1.2rem;
+	text-indent: rem2px(2rem);
+	text-indent: 2rem;
+}
+```
 
-Let's go more deeply! Now we want a border and an outline around the title with 1px width. Our tool is em-based but it provides a conversion function for that, which will simplify our lives: `px-rhythm`. Oh! One last thing! Of course, we'll need a padding of 2 whitespace lines. Then, to keep our rhythm we'll must substract the borders (2px) from the padding:
+The computing base is set to `16px`, which is the root `font-size` of all browsers. If you have set another root font size (by setting a `%` font size to `html`, per example), you can modify it with :
 
-	// First approach
-	h1{
-		font-size:1.5em;
-		line-height:rhythm(auto,1.5em);
-		border:black solid px-rhythm(1,1.5em);
-		outline:red solid px-rhythm(1,1.5em);
-		padding:rhythm(2,1.5em) - px-rhythm(2,1.5em);
-	}
+```scss
+$vr-root-px:12px;
 
-	// Second approach
-	h1{
-		@include font-size(1.5em);
-		@include border(black,1.5em);
-		@include outline(red,1.5em);
-		@include padding(2,1.5em,2);
-	}
+html{
+	// 75% of 16px = 12px
+	font-size:75%;
+}
 
-That's all we need for that and your title is fully rhythmic.
+p{
+	text-indent:rem2px(2rem);
+}
+```
 
-IV - Additional notes
----------------------
+V - Modular scale
+-----------------
 
-Setting many levels of line-height childs increases exponentially the complexity of the rhythm calculation. Furthermore, websites generally use only one depth level. Thus, vertical-rhythmic doesn't support it. Long story short: if you want to have a `<p>` within a `<div>` within another `<div>`, and all have their own line-height, just take your calculator and enjoy.
+Vertical-rhythmic is designed to be very flexible. A good companion could be [modular-scale](https://github.com/Team-Sass/modular-scale), a modular scale calculator bringing you golden ratio (and many more) to your stylesheets. The use of vertical-rhythmic is slightly different but still short and simple :
+
+```scss
+$ms-base:1rem;
+$ms-ratio:$golden;
+
+body{
+	@include vr-baseline(1rem,1.4rem);
+}
+
+section{
+	font-size: ms(2);
+	line-height: vr(ms(2));
+}
+
+section div{
+	font-size: ms(3);
+	margin-top: vr(ms(3),2);
+	margin-bottom: vr(ms(3),3);
+	padding: vr(ms(3),0.5);
+}
+```
+
+VI - Licence
+------------
+
+Released under the MIT license ;)

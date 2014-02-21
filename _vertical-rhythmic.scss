@@ -1,281 +1,65 @@
 /*
-    vertical-rhythmic
-    
-    Version : 0.4.0
-    Author  : Aurélien Delogu (dev@dreamysource.fr)
-    License : MIT
+	vertical-rhythmic
+	
+	Version : 2.0.0
+	Author  : Aurélien Delogu (dev@dreamysource.fr)
+	License : MIT
 */
 
 /*
-    number $base-font-size: base font-size which will be applied to the body (default: 1em)
+	number $vr-ratio
+	number $vr-root-px
 */
-$base-font-size:    1em !default;
+$vr-ratio	: null;
+$vr-root-px	: 16px !default;
 
 /*
-    number $base-line-height: base line-height which will be applied to the body (default: 1.5em)
-*/
-$base-line-height:  1.5em !default;
+	Establish baseline
 
-/*
-    Initialize the rhythm
+	Parameters
+		number $font-size
+		number $line-height
 */
-body{
-    font-size:$base-font-size;
-    line-height:$base-line-height;
+@mixin vr-baseline($font-size,$line-height){
+	// Establish baseline
+	font-size:$font-size;
+	line-height:$line-height;
+	// Format parameters
+	$font-size:$font-size/($font-size*0+1);
+	$line-height:$line-height/($line-height*0+1);
+	// Compute ratio
+	$vr-ratio:$line-height/$font-size;
 }
 
 /*
-    Return a rhythm
+	Return a rhythm
 
-    Parameters
-        integer $lines      : number of whitespace lines (default: 1)
-                              You can specify "auto" value and it will generate a proportional value from the base line-height (especially useful when you want to set a good line-height value)
-        number $font-size   : font size, in ems
+	Parameters
+		number $font-size
+		number $factor
+
+	Return
+		number
 */
-@function rhythm($lines:1,$font-size:1em){
-    @if $lines == auto {
-        $lines:ceil($font-size / $base-line-height);
-    }
-    @return $base-line-height / $font-size * $lines * 1em;
+@function vr($font-size,$factor:1){
+	@return $vr-ratio*$factor*$font-size;
 }
 
 /*
-    Return a rhythm from pixel unit
+	Convert REM value to PX
 
-    Parameters
-        integer $width      : width of the rhythm (without px unit)
-        number $font-size   : font size, in ems
+	Parameters
+		number $value
+
+	Return
+		number
 */
-@function px-rhythm($width:1,$font-size:1em){
-    @if unit($width) == px {
-        $width:$width / 1px;
-    }
-    @return $width * 0.0625 / $base-font-size / $font-size * 1em * 1em * 1em;
-}
-
-/*
-    Set a new font-size and automatically adapt the line-height
-
-    Parameters
-        number $font-size   : font size, in ems
-        integer $lines      : number of whitespace lines for the line-height
-                              Keeps base line proportions by default
-*/
-@mixin font-size($font-size,$lines:ceil($font-size / $base-line-height)){
-    font-size:$font-size;
-    line-height:rhythm($lines,$font-size);
-}
-
-/*
-    Add a margin around a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin margin($lines:1,$font-size:1em,$border-width:0){
-    margin:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a top margin to a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin margin-top($lines:1,$font-size:1em,$border-width:0){
-    margin-top:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a right margin to a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin margin-right($lines:1,$font-size:1em,$border-width:0){
-    margin-right:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a bottom margin to a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin margin-bottom($lines:1,$font-size:1em,$border-width:0){
-    margin-bottom:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a left margin to a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin margin-left($lines:1,$font-size:1em,$border-width:0){
-    margin-left:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a padding around a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin padding($lines:1,$font-size:1em,$border-width:0){
-    padding:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a top padding to a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin padding-top($lines:1,$font-size:1em,$border-width:0){
-    padding-top:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a right padding to a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin padding-right($lines:1,$font-size:1em,$border-width:0){
-    padding-right:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a bottom padding to a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin padding-bottom($lines:1,$font-size:1em,$border-width:0){
-    padding-bottom:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a left padding to a box
-
-    Parameters
-        integer $lines          : number of whitespace lines (default: 1)
-        number $font-size       : actual font-size, in ems, to calculate with (default: 1em)
-        integer $border-width   : width of additionnal borders around the box
-                                  Useful to substract borders from the whitespace to not break the rhythm
-*/
-@mixin padding-left($lines:1,$font-size:1em,$border-width:0){
-    padding-left:rhythm($lines,$font-size) - px-rhythm($border-width,$font-size);
-}
-
-/*
-    Add a top border around a box
-
-    Parameters
-        string $color       : color
-        number $font-size   : font-size of the box (in em)
-        integer $width      : border width
-                              It quite equals to pixels but it depends on the base font-size of the browser, so it takes no unit
-        string $type        : border type
-*/
-@mixin border($color,$font-size:1em,$width:1,$type:solid){
-    border:px-rhythm($width,$font-size) $type $color;
-}
-
-/*
-    Add a top border to a box
-
-    Parameters
-        string $color       : color
-        number $font-size   : font-size of the box (in em)
-        integer $width      : border width
-                              It quite equals to pixels but it depends on the base font-size of the browser, so it takes no unit
-        string $type        : border type
-*/
-@mixin border-top($color,$font-size:1em,$width:1,$type:solid){
-    border-top:px-rhythm($width,$font-size) $type $color;
-}
-
-/*
-    Add a right border to a box
-
-    Parameters
-        string $color       : color
-        number $font-size   : font-size of the box (in em)
-        integer $width      : border width
-                              It quite equals to pixels but it depends on the base font-size of the browser, so it takes no unit
-        string $type        : border type
-*/
-@mixin border-right($color,$font-size:1em,$width:1,$type:solid){
-    border-right:px-rhythm($width,$font-size) $type $color;
-}
-
-/*
-    Add a bottom border to a box
-
-    Parameters
-        string $color       : color
-        number $font-size   : font-size of the box (in em)
-        integer $width      : border width
-                              It quite equals to pixels but it depends on the base font-size of the browser, so it takes no unit
-        string $type        : border type
-*/
-@mixin border-bottom($color,$font-size:1em,$width:1,$type:solid){
-    border-bottom:px-rhythm($width,$font-size) $type $color;
-}
-
-/*
-    Add a left border to a box
-
-    Parameters
-        string $color       : color
-        number $font-size   : font-size of the box (in em)
-        integer $width      : border width
-                              It quite equals to pixels but it depends on the base font-size of the browser, so it takes no unit
-        string $type        : border type
-*/
-@mixin border-left($color,$font-size:1em,$width:1,$type:solid){
-    border-left:px-rhythm($width,$font-size) $type $color;
-}
-
-/*
-    Add an outline around a box
-
-    Parameters
-        string $color       : color
-        number $font-size   : font-size of the box (in em)
-        integer $width      : border width
-                              It quite equals to pixels but it depends on the base font-size of the browser, so it takes no unit
-        string $type        : outline type
-*/
-@mixin outline($color,$font-size:1em,$width:1,$type:solid){
-    outline:px-rhythm($width,$font-size) $type $color;
+@function rem2px($value){
+	@if(unit($value)==rem){
+		$value:$value/1rem;
+	}
+	@if(unitless($vr-root-px)){
+		$vr-root-px:$vr-root-px*1px;
+	}
+	@return $value*$vr-root-px;
 }
