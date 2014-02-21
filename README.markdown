@@ -92,7 +92,7 @@ p{
 V - Modular scale
 -----------------
 
-Vertical-rhythmic is designed to be very flexible. A good companion could be [modular-scale](https://github.com/Team-Sass/modular-scale), a modular scale calculator bringing you golden ratio (and many more) to your stylesheets. The use of vertical-rhythmic is slightly different but still short and simple :
+Vertical-rhythmic is designed to be very flexible. A good companion could be [modular-scale](https://github.com/Team-Sass/modular-scale), a modular scale calculator bringing golden ratio (and many others) to your stylesheets. The use of vertical-rhythmic is slightly different but still short and simple :
 
 ```scss
 $ms-base:1rem;
@@ -115,7 +115,7 @@ section div{
 }
 ```
 
-VI - Licence
+VI - License
 ------------
 
 Released under the MIT license ;)
