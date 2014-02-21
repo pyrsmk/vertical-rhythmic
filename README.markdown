@@ -1,6 +1,8 @@
 Vertical-rhythmic 2.0.0
 =======================
 
+__2.0 version is not compatible at all with 0.4, please read the new documentation__
+
 I - Introduction
 ----------------
 
