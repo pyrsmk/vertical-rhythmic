@@ -13,8 +13,17 @@ As you may saw, manually managing rhythms is dreadfully painful. There's some to
 
 Vertical-rhythmic revolves around the font size of each block of your design to keep a beautiful ratio in line heights, margins, padding, and other whitespaces.
 
-II - Quick example
-------------------
+II - Installation
+-----------------
+
+You can pick up the SCSS file or install it with [Bower](http://bower.io) :
+
+```
+bower install vertical-rhythmic --save
+```
+
+III - Quick example
+-------------------
 
 ```scss
 html{
@@ -33,15 +42,6 @@ section div{
 	margin-bottom: vr(1.4rem,3);
 	padding: vr(1.4rem,0.5);
 }
-```
-
-III - Installation
-------------------
-
-You can pick up the SCSS file or install it with [Bower](http://bower.io) :
-
-```
-bower install vertical-rhythmic --save
 ```
 
 IV - Basic use
