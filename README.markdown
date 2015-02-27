@@ -35,8 +35,17 @@ section div{
 }
 ```
 
-III - Use
---------
+III - Installation
+------------------
+
+You can pick up the SCSS file or install it with [Bower](http://bower.io) :
+
+```
+bower install vertical-rhythmic --save
+```
+
+IV - Basic use
+--------------
 
 To begin with vertical rhythms, you need to establish the baseline to give to vertical-rhythmic the base ratio for all calculations. The function takes your `font-size` as first argument and your `line-height` as second argument. Please note that the library is compatible with __any CSS unit__.
 
@@ -58,8 +67,8 @@ h1{
 
 Then that's all, you're good to ride!
 
-IV - REMs and PX fallback
--------------------------
+V - REMs and PX fallback
+------------------------
 
 [Some browsers](http://caniuse.com/#feat=rem), whose Internet Explorer 7 and 8, don't support `rem`. We need a fallback with `px` unit. Vertical-rhythmic provides a `rem2px` method to simplify that fallback when using `rem` unit :
 
@@ -87,8 +96,8 @@ p{
 }
 ```
 
-V - Modular scale
------------------
+VI - Modular scale
+------------------
 
 Vertical-rhythmic is designed to be very flexible. A good companion could be [modular-scale](https://github.com/Team-Sass/modular-scale), a modular scale calculator bringing golden ratio (and many others) to your stylesheets. The use of vertical-rhythmic is slightly different but still short and simple :
 
@@ -113,7 +122,7 @@ section div{
 }
 ```
 
-VI - License
-------------
+VII - License
+-------------
 
 Released under the MIT license ;)

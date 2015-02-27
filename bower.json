@@ -1,0 +1,27 @@
+{
+	"name": "vertical-rhythmic",
+	"description": "Vertical-rhythm functions and mixins written in Sass",
+	"main": "_vertical-rhythmic.scss",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/pyrsmk/vertical-rhythmic.git"
+	},
+	"keywords": [
+		"vertical",
+		"rhythm",
+		"modular",
+		"scale",
+		"golden",
+		"ratio",
+		"responsive",
+		"design"
+	],
+	"authors": ["Aurélien Delogu"],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/pyrsmk/vertical-rhythmic/issues",
+		"email": "dev@dreamysource.fr"
+	},
+	"homepage": "http://dreamysource.fr/product/vertical-rhythmic",
+	"ignore": [".git"]
+}
