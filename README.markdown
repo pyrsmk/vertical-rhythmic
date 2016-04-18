@@ -1,7 +1,7 @@
 Vertical-rhythmic 2.0.1
 =======================
 
-First, I encourage you to take a look at how works [modular-scale](https://github.com/modularscale/modularscale-sass) with [responsive scales](http://madebymike.com.au/writing/precise-control-responsive-typography/), a very interesting typography technique. Vertical-rhythmic can't handle it for the moment, but I'm thinking about a workaround.
+I encourage you to use vertical-rhythmic with [modular-scale](https://github.com/modularscale/modularscale-sass), please see chapter 5.
 
 I - Introduction
 ----------------
