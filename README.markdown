@@ -28,22 +28,24 @@ III - Quick example
 
 ```scss
 html {
-	@include vr-baseline(0.9rem, 1.4rem);
+	@include vr-baseline(0.9em, 1.4em);
 }
 
 section {
-	font-size: 1.2rem;
-	line-height: vr(1.2rem);
+	font-size: 1.2em;
+	line-height: vr(1.2em);
 }
 
 section div {
-	font-size: 1.4rem;
-	line-height: vr(1.4rem);
-	margin-top: vr(1.4rem, 2);
-	margin-bottom: vr(1.4rem, 3);
-	padding: vr(1.4rem, 0.5);
+	font-size: 1.4em;
+	line-height: vr(1.4em);
+	margin-top: vr(1.4em, 2);
+	margin-bottom: vr(1.4em, 3);
+	padding: vr(1.4em, 0.5);
 }
 ```
+
+For a comparison of vertical-rhythmic and modular-scale use, and a live example, see this [codepen](http://codepen.io/pyrsmk/pen/PNeJgg). Read this [issue comment](https://github.com/pyrsmk/vertical-rhythmic/issues/5#issuecomment-211293872) to have some explanations of this example.
 
 IV - Basic use
 --------------
@@ -52,7 +54,7 @@ To begin with vertical rhythms, you need to establish the baseline to give to ve
 
 ```scss
 html {
-	@include vr-baseline(0.9rem, 1.4rem);
+	@include vr-baseline(0.9em, 1.4em);
 }
 ```
 
@@ -60,16 +62,28 @@ Be careful that `vr-baseline()` automatically adds `font-size` and `line-height`
 
 ```scss
 h1 {
-	font-size: 1.6rem;
-	line-height: vr(1.6rem, 1.5);
-	margin: vr(1.6rem, 2) 0;
+	font-size: 1.6em;
+	line-height: vr(1.6em, 1.5);
+	margin: vr(1.6em, 2) 0;
 }
 ```
 
-Then that's all, you're good to ride!
+V - With modular scale
+----------------------
 
-V - REMs and PX fallback
-------------------------
+Vertical-rhythmic is designed to be very flexible. A good companion is the well-known [modular-scale](https://github.com/Team-Sass/modular-scale). Modular-scale won't change the use of vertical-rhythmic, you just have to modify how you need to set your baseline :
+
+```scss
+$ms-base: 1em;
+$ms-ratio: $major-second;
+
+html {
+	  @include vr-baseline(ms(0), ms(1));
+}
+```
+
+VI - REMs and PX fallback
+-------------------------
 
 Important : this function will be dropped in the next major release.
 
@@ -96,32 +110,6 @@ html {
 
 p {
 	text-indent: rem2px(2rem);
-}
-```
-
-VI - Modular scale
-------------------
-
-Vertical-rhythmic is designed to be very flexible. A good companion is the well-known [modular-scale](https://github.com/Team-Sass/modular-scale). The use of vertical-rhythmic is slightly different but still short and simple :
-
-```scss
-$ms-base: 1em;
-$ms-ratio: $major-second;
-
-html {
-	@include vr-baseline(ms(0), ms(1));
-}
-
-section {
-	font-size: ms(2);
-	line-height: vr(ms(2));
-}
-
-section div {
-	font-size: ms(3);
-	margin-top: vr(ms(3), 2);
-	margin-bottom: vr(ms(3), 3);
-	padding: vr(ms(3), 0.5);
 }
 ```
 
