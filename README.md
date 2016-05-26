@@ -1,4 +1,4 @@
-Vertical-rhythmic 2.0.1
+Vertical-rhythmic 2.0.2
 =======================
 
 I encourage you to use vertical-rhythmic with [modular-scale](https://github.com/modularscale/modularscale-sass), please see chapter 5.
