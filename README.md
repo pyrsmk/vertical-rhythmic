@@ -21,6 +21,7 @@ You can pick up the SCSS file or install it with [Bower](http://bower.io) :
 
 ```
 bower install vertical-rhythmic --save
+npm install pyrsmk/vertical-rhythmic --save
 ```
 
 III - Quick example
