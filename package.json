@@ -1,4 +1,6 @@
 {
+  "name": "vertical-rhythmic",
+  "main": "_vertical-rhythmic.scss",
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-replace": "^0.5.3",
