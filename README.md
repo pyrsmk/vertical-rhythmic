@@ -1,9 +1,7 @@
 Vertical-rhythmic 2.0.2
 =======================
 
-I encourage you to use vertical-rhythmic in addition to [modular-scale](https://github.com/modularscale/modularscale-sass), please see chapter 5.
-
-For a comparison of vertical-rhythmic and modular-scale use, and a live example, see this [codepen](http://codepen.io/pyrsmk/pen/PNeJgg). Read this [issue comment](https://github.com/pyrsmk/vertical-rhythmic/issues/5#issuecomment-211293872) to have some explanations on this example.
+I encourage you to use vertical-rhythmic in addition to [modular-scale](https://github.com/modularscale/modularscale-sass), please see chapter 5. For a live example, see this [codepen](http://codepen.io/pyrsmk/pen/PNeJgg).
 
 I - Introduction
 ----------------
