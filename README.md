@@ -70,7 +70,7 @@ h1 {
 V - With modular scale
 ----------------------
 
-Vertical-rhythmic is designed to be very flexible. A good companion is the well-known [modular-scale](https://github.com/Team-Sass/modular-scale). Modular-scale won't change the use of vertical-rhythmic, you just have to modify how you need to set your baseline :
+Vertical-rhythmic is designed to be very flexible. A good companion is the well-known [modular-scale](https://github.com/Team-Sass/modular-scale). Modular scale returns a ratio-based `em` value that we're gonna to use for our baseline :
 
 ```scss
 $ms-base: 1em;
