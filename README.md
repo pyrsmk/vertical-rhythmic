@@ -1,7 +1,9 @@
 Vertical-rhythmic 2.0.2
 =======================
 
-I encourage you to use vertical-rhythmic with [modular-scale](https://github.com/modularscale/modularscale-sass), please see chapter 5.
+I encourage you to use vertical-rhythmic in addition to [modular-scale](https://github.com/modularscale/modularscale-sass), please see chapter 5.
+
+For a comparison of vertical-rhythmic and modular-scale use, and a live example, see this [codepen](http://codepen.io/pyrsmk/pen/PNeJgg). Read this [issue comment](https://github.com/pyrsmk/vertical-rhythmic/issues/5#issuecomment-211293872) to have some explanations on this example.
 
 I - Introduction
 ----------------
@@ -29,7 +31,7 @@ III - Quick example
 
 ```scss
 html {
-	@include vr-baseline(0.9em, 1.4em);
+	@include vr-baseline(0.9em, 1.4);
 }
 
 section {
@@ -46,8 +48,6 @@ section div {
 }
 ```
 
-For a comparison of vertical-rhythmic and modular-scale use, and a live example, see this [codepen](http://codepen.io/pyrsmk/pen/PNeJgg). Read this [issue comment](https://github.com/pyrsmk/vertical-rhythmic/issues/5#issuecomment-211293872) to have some explanations of this example.
-
 IV - Basic use
 --------------
 
@@ -55,7 +55,7 @@ To begin with vertical rhythms, you need to establish the baseline to give to ve
 
 ```scss
 html {
-	@include vr-baseline(0.9em, 1.4em);
+	@include vr-baseline(0.9em, 1.4);
 }
 ```
 
@@ -79,12 +79,12 @@ $ms-base: 1em;
 $ms-ratio: $major-second;
 
 html {
-	  @include vr-baseline(ms(0), ms(1));
+	  @include vr-baseline(ms(0), 1.4);
 }
 ```
 
-VI - REMs and PX fallback
--------------------------
+VI - [OBSOLETE] REMs and PX fallback
+------------------------------------
 
 Important : this function will be dropped in the next major release.
 
