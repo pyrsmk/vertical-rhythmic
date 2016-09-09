@@ -104,7 +104,7 @@ main {
 Simplify your alignments with jellybeans.js
 -------------------------------------------
 
-A good companion to vertical-rhythmic is [jellybeans](https://github.com/pyrsmk/jellybeans). It emphasizes your different blocks by setting them a random background color.
+Since the grid helper is not reliable enough, I've created a JS helper, to help us a bit : [jellybeans](https://github.com/pyrsmk/jellybeans). It emphasizes your different blocks by setting them a random background color.
 
 License
 -------
