@@ -14,7 +14,9 @@
 		"golden",
 		"ratio",
 		"responsive",
-		"design"
+		"design",
+		"fluid",
+		"typography"
 	],
 	"authors": ["Aurélien Delogu"],
 	"license": "MIT",
