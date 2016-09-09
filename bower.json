@@ -1,6 +1,6 @@
 {
 	"name": "vertical-rhythmic",
-	"description": "Vertical-rhythm functions and mixins written in Sass",
+	"description": "Fluid typography and vertical rhythm toolkit",
 	"main": "_vertical-rhythmic.scss",
 	"repository": {
 		"type": "git",
