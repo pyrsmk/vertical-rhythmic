@@ -1,4 +1,4 @@
-vertical-rhythmic 3.0.0
+vertical-rhythmic 3.0.1
 =======================
 
 Vertical-rhythmic is now a toolkit for responsive designing. It includes :
