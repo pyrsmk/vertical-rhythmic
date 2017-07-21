@@ -1,13 +1,13 @@
 vertical-rhythmic 3.0.1
 =======================
 
-Vertical-rhythmic is now a toolkit for responsive designing. It includes :
+Vertical-rhythmic is now a toolkit for responsive design. It includes :
 
 - [fluid typography](https://www.smashingmagazine.com/2016/05/fluid-typography/)
 - font optimizations
 - grid helper
 - [modular scale](https://github.com/modularscale/modularscale-sass) support
-- and vertical rhythms of course
+- and vertical rhythms, of course
 
 Install
 -------
@@ -91,9 +91,9 @@ Grid helper
 
 The grid is a well-known tool to align all our blocks against the rhythm. But it is currently inconsistent with fluid typography. As stated in this [codepen](https://codepen.io/MadeByMike/pen/bEEGvv) :
 
-> If the lines seem to glitch out occasionally it's not because the vertical rhythm is broken. I think it's because of the way the browser rounds. The height of the gradient background that draws the lines on the body element is only rounded once, whereas real line hight is rounded on a per element basis. This adds up by the time you get to the bottom of the page. No idea how to fix it!
+> If the lines seem to glitch out occasionally it's not because the vertical rhythm is broken. I think it's because of the way the browser rounds. The height of the gradient background that draws the lines on the body element is only rounded once, whereas real line height is rounded on a per element basis. This adds up by the time you get to the bottom of the page. No idea how to fix it!
 
-I came to the same conclusion and I have really no idea how to fix that too. So, it is a good idea to use a grid only on needed blocks, like `article`. That being said, you can show the grid with :
+I came up to the same conclusion and I have really no idea how to fix that too. So, it is a good idea to use a grid only on needed blocks, like `article`. That being said, you can show the grid with :
 
 ```scss
 main {
