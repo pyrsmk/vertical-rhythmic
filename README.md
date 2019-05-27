@@ -1,6 +1,8 @@
 vertical-rhythmic 3.0.1
 =======================
 
+__This library is now considered obsolete and unmaintained. You should use [modular-scale](https://github.com/modularscale/modularscale-sass) instead as it handles the same features, with a scale approach (instead of a multiplier).__
+
 Vertical-rhythmic is now a toolkit for responsive design. It includes :
 
 - [fluid typography](https://www.smashingmagazine.com/2016/05/fluid-typography/)
